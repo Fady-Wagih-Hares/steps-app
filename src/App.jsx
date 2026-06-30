@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Button from "./components/Button";
+import StepMessage from "./components/StepMessage";
 
 const App = () => {
   const messages = [
@@ -48,14 +50,24 @@ const App = () => {
             <div className={step >= 2 ? "active" : ""}>2</div>
             <div className={step >= 3 ? "active" : ""}>3</div>
           </div>
-          <p className="message">
+          {/* <p className="message">
             Step {step}: {messages[step - 1]}
             {/* {test.name} */}
-          </p>
-
+          {/* </p> */}
+          <StepMessage step={step}>{messages[step - 1]}</StepMessage>
           <div className="buttons">
-            <button onClick={() => handlePrevious()}> Previous</button>
-            <button onClick={() => handleNext()}>Next</button>
+            {/* <button onClick={() => handlePrevious()}> Previous</button> */}
+            {/* making reuseable component */}
+            {/* we could passing the content to the component the jsx itself */}
+            <Button onClick={handlePrevious}>
+              <span>👈</span>
+              Previous
+            </Button>
+            {/* <button onClick={() => handleNext()}>Next</button> */}
+            <Button onClick={handleNext}>
+              Next
+              <span>👉</span>
+            </Button>
           </div>
         </div>
       )}
